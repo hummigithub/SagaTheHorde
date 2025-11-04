@@ -44,10 +44,12 @@ void SpawnHordes()
 	array<Man> players = new array<Man>;
 	GetGame().GetPlayers(players);
 	
+	// Exit if no players online
 	if (players.Count() == 0)
 		return;
 	
 	// Spawn horde near random player
+	// Note: Count() is guaranteed to be > 0 here due to check above
 	int playerIndex = Math.RandomInt(0, players.Count());
 	Man player = players.Get(playerIndex);
 	

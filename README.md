@@ -2,7 +2,7 @@
 DayZ Modification that brings zombie hordes to your server for an enhanced survival experience.
 
 ## Overview
-SagaTheHorde is a server-side modification for DayZ that spawns dynamic zombie hordes near players. This mod increases the difficulty and excitement by creating intense survival scenarios with groups of 5-15 zombies spawning periodically around active players.
+SagaTheHorde is a server-side modification for DayZ that spawns dynamic zombie hordes near players. This mod increases the difficulty and excitement by creating intense survival scenarios with groups of 5-16 zombies spawning periodically around active players.
 
 ## Features
 - **Dynamic Horde Spawning**: Zombie hordes spawn automatically near players
