@@ -1,3 +1,21 @@
+// ============================================
+// SagaTheHorde Configuration Constants
+// ============================================
+// Adjust these values to customize horde behavior
+
+// Spawn interval in milliseconds (600000 = 10 minutes)
+const int HORDE_SPAWN_INTERVAL = 600000;
+
+// Horde size (min and max zombies per horde)
+const int HORDE_SIZE_MIN = 5;
+const int HORDE_SIZE_MAX = 16;
+
+// Spawn distance from players in meters
+const float SPAWN_DISTANCE_MIN = 50.0;
+const float SPAWN_DISTANCE_MAX = 150.0;
+
+// ============================================
+
 void main()
 {
 	// Initialize mission
@@ -15,8 +33,8 @@ void main()
 	// Initialize economy
 	GetCEApi().ExportProxyData(Vector(7500, 0, 7500), 15000);
 
-	// Initialize horde system (spawns every 10 minutes)
-	GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 600000, true);
+	// Initialize horde system
+	GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, HORDE_SPAWN_INTERVAL, true);
 }
 
 // Horde spawning function
@@ -37,21 +55,30 @@ void SpawnHordes()
 	{
 		vector playerPos = player.GetPosition();
 		
-		// Spawn multiple zombies in a horde (5-15 zombies)
-		int hordeSize = Math.RandomInt(5, 16);
+		// Spawn multiple zombies in a horde using configured size
+		int hordeSize = Math.RandomInt(HORDE_SIZE_MIN, HORDE_SIZE_MAX);
 		
 		for (int i = 0; i < hordeSize; i++)
 		{
-			// Random position around player (50-150m away)
+			// Random position around player using configured distance
 			float angle = Math.RandomFloat(0, Math.PI * 2); // Angle in radians
-			float distance = Math.RandomFloat(50, 150);
+			float distance = Math.RandomFloat(SPAWN_DISTANCE_MIN, SPAWN_DISTANCE_MAX);
 			
 			vector spawnPos = playerPos;
 			spawnPos[0] = spawnPos[0] + (Math.Cos(angle) * distance);
 			spawnPos[2] = spawnPos[2] + (Math.Sin(angle) * distance);
 			
-			// Get ground position
-			spawnPos[1] = GetGame().SurfaceY(spawnPos[0], spawnPos[2]);
+			// Get ground position with validation
+			float groundY = GetGame().SurfaceY(spawnPos[0], spawnPos[2]);
+			
+			// Validate Y coordinate (skip if invalid)
+			if (groundY < -1000 || groundY > 10000)
+			{
+				Print("[SagaTheHorde] Invalid ground position, skipping zombie spawn");
+				continue;
+			}
+			
+			spawnPos[1] = groundY;
 			
 			// Random zombie type
 			string zombieType;
@@ -91,13 +118,18 @@ void SpawnHordes()
 					break;
 			}
 			
-			// Spawn zombie
+			// Spawn zombie with error handling
 			EntityAI zombie = EntityAI.Cast(GetGame().CreateObject(zombieType, spawnPos, false, true));
 			
 			if (zombie)
 			{
 				// Make zombie aggressive
 				zombie.SetAllowDamage(true);
+			}
+			else
+			{
+				// Log error if zombie failed to spawn
+				Print("[SagaTheHorde] Failed to spawn zombie type: " + zombieType + " at position " + spawnPos);
 			}
 		}
 		

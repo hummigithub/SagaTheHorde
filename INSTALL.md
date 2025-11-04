@@ -27,33 +27,43 @@ YOUR_SERVER/mpmissions/dayzOffline.chernarusplus/
 
 ### 3. Configure the Mod (Optional)
 
-You can customize the horde behavior by editing the `init.c` file:
+You can customize the horde behavior by editing the configuration constants at the top of the `init.c` file (lines 1-16). This makes customization easy and clear.
+
+#### Configuration Constants
+
+All configuration is done at the top of the file using constants:
+
+```cpp
+// Spawn interval in milliseconds (600000 = 10 minutes)
+const int HORDE_SPAWN_INTERVAL = 600000;
+
+// Horde size (min and max zombies per horde)
+const int HORDE_SIZE_MIN = 5;
+const int HORDE_SIZE_MAX = 16;
+
+// Spawn distance from players in meters
+const float SPAWN_DISTANCE_MIN = 50.0;
+const float SPAWN_DISTANCE_MAX = 150.0;
+```
 
 #### Spawn Interval
 Change how often hordes spawn (in milliseconds):
-```cpp
-GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 600000, true);
-```
-- `600000` = 10 minutes (default)
 - `300000` = 5 minutes
+- `600000` = 10 minutes (default)
 - `900000` = 15 minutes
 - `1200000` = 20 minutes
 
 #### Horde Size
 Adjust the number of zombies per horde:
-```cpp
-int hordeSize = Math.RandomInt(5, 16);
-```
-- First number (5) = minimum zombies
-- Second number (16) = maximum zombies
+- Default: MIN=5, MAX=16 (5-15 zombies)
+- Small: MIN=3, MAX=8 (3-7 zombies)
+- Large: MIN=10, MAX=26 (10-25 zombies)
 
 #### Spawn Distance
-Change how far from players hordes spawn:
-```cpp
-float distance = Math.RandomFloat(50, 150);
-```
-- First number (50) = minimum distance in meters
-- Second number (150) = maximum distance in meters
+Change how far from players hordes spawn (in meters):
+- Default: MIN=50.0, MAX=150.0
+- Close: MIN=30.0, MAX=100.0
+- Far: MIN=100.0, MAX=200.0
 
 ### 4. Restart Your Server
 After installing the mod files, restart your DayZ server for changes to take effect.

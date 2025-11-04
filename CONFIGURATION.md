@@ -2,60 +2,57 @@
 
 This file contains various configuration examples for customizing the horde mod.
 
+**Note:** All configuration is done by editing the constants at the top of `init.c` (lines 1-16). This makes customization simple and clear.
+
+## Configuration Constants
+
+```cpp
+// Spawn interval in milliseconds (600000 = 10 minutes)
+const int HORDE_SPAWN_INTERVAL = 600000;
+
+// Horde size (min and max zombies per horde)
+const int HORDE_SIZE_MIN = 5;
+const int HORDE_SIZE_MAX = 16;
+
+// Spawn distance from players in meters
+const float SPAWN_DISTANCE_MIN = 50.0;
+const float SPAWN_DISTANCE_MAX = 150.0;
+```
+
 ## Example 1: Intense Survival (Large, Frequent Hordes)
 ```cpp
-// In init.c, modify these lines:
-
-// Spawn every 5 minutes
-GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 300000, true);
-
-// 10-25 zombies per horde
-int hordeSize = Math.RandomInt(10, 26);
-
-// Spawn closer to players (30-100m)
-float distance = Math.RandomFloat(30, 100);
+const int HORDE_SPAWN_INTERVAL = 300000;  // 5 minutes
+const int HORDE_SIZE_MIN = 10;
+const int HORDE_SIZE_MAX = 26;
+const float SPAWN_DISTANCE_MIN = 30.0;
+const float SPAWN_DISTANCE_MAX = 100.0;
 ```
 
 ## Example 2: Casual Mode (Small, Rare Hordes)
 ```cpp
-// In init.c, modify these lines:
-
-// Spawn every 15 minutes
-GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 900000, true);
-
-// 3-7 zombies per horde
-int hordeSize = Math.RandomInt(3, 8);
-
-// Spawn farther from players (100-200m)
-float distance = Math.RandomFloat(100, 200);
+const int HORDE_SPAWN_INTERVAL = 900000;  // 15 minutes
+const int HORDE_SIZE_MIN = 3;
+const int HORDE_SIZE_MAX = 8;
+const float SPAWN_DISTANCE_MIN = 100.0;
+const float SPAWN_DISTANCE_MAX = 200.0;
 ```
 
 ## Example 3: Apocalypse Mode (Massive Hordes)
 ```cpp
-// In init.c, modify these lines:
-
-// Spawn every 3 minutes
-GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 180000, true);
-
-// 20-40 zombies per horde
-int hordeSize = Math.RandomInt(20, 41);
-
-// Spawn at varied distances (40-120m)
-float distance = Math.RandomFloat(40, 120);
+const int HORDE_SPAWN_INTERVAL = 180000;  // 3 minutes
+const int HORDE_SIZE_MIN = 20;
+const int HORDE_SIZE_MAX = 41;
+const float SPAWN_DISTANCE_MIN = 40.0;
+const float SPAWN_DISTANCE_MAX = 120.0;
 ```
 
 ## Example 4: Balanced Experience (Default)
 ```cpp
-// In init.c, modify these lines:
-
-// Spawn every 10 seconds (for testing) or 600000 (10 minutes for production)
-GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 600000, true);
-
-// 5-15 zombies per horde
-int hordeSize = Math.RandomInt(5, 16);
-
-// Spawn at safe distance (50-150m)
-float distance = Math.RandomFloat(50, 150);
+const int HORDE_SPAWN_INTERVAL = 600000;  // 10 minutes
+const int HORDE_SIZE_MIN = 5;
+const int HORDE_SIZE_MAX = 16;
+const float SPAWN_DISTANCE_MIN = 50.0;
+const float SPAWN_DISTANCE_MAX = 150.0;
 ```
 
 ## Tips for Server Admins

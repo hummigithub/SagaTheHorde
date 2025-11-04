@@ -10,66 +10,80 @@ Quick reference for server administrators running SagaTheHorde mod.
 
 ## Common Customizations
 
+All customizations are done by editing the constants at the top of `init.c` (lines 1-16).
+
 ### Change Spawn Frequency
 ```cpp
-// Line 19 in init.c
-GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, XXXXX, true);
+// Line 7 in init.c
+const int HORDE_SPAWN_INTERVAL = XXXXX;
 ```
 Replace XXXXX with milliseconds:
 - 60000 = 1 minute
 - 300000 = 5 minutes
-- 600000 = 10 minutes (recommended)
+- 600000 = 10 minutes (default)
 - 900000 = 15 minutes
 
 ### Change Horde Size
 ```cpp
-// Line 41 in init.c
-int hordeSize = Math.RandomInt(MIN, MAX);
+// Lines 10-11 in init.c
+const int HORDE_SIZE_MIN = X;
+const int HORDE_SIZE_MAX = XX;
 ```
-Replace MIN and MAX:
-- (3, 8) = Small hordes
-- (5, 16) = Default
-- (10, 26) = Large hordes
-- (20, 41) = Massive hordes
+Replace X and XX:
+- MIN=3, MAX=8 = Small hordes
+- MIN=5, MAX=16 = Default
+- MIN=10, MAX=26 = Large hordes
+- MIN=20, MAX=41 = Massive hordes
 
 ### Change Spawn Distance
 ```cpp
-// Line 47 in init.c
-float distance = Math.RandomFloat(MIN, MAX);
+// Lines 14-15 in init.c
+const float SPAWN_DISTANCE_MIN = XX.0;
+const float SPAWN_DISTANCE_MAX = XXX.0;
 ```
-Replace MIN and MAX (in meters):
-- (30, 100) = Close range
-- (50, 150) = Default
-- (100, 200) = Far range
+Replace XX and XXX (in meters):
+- MIN=30.0, MAX=100.0 = Close range
+- MIN=50.0, MAX=150.0 = Default
+- MIN=100.0, MAX=200.0 = Far range
 
 ## Presets
 
+Edit the constants at the top of init.c:
+
 ### Easy Mode
 ```cpp
-GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 900000, true);
-int hordeSize = Math.RandomInt(3, 8);
-float distance = Math.RandomFloat(100, 200);
+const int HORDE_SPAWN_INTERVAL = 900000;
+const int HORDE_SIZE_MIN = 3;
+const int HORDE_SIZE_MAX = 8;
+const float SPAWN_DISTANCE_MIN = 100.0;
+const float SPAWN_DISTANCE_MAX = 200.0;
 ```
 
 ### Normal Mode (Default)
 ```cpp
-GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 600000, true);
-int hordeSize = Math.RandomInt(5, 16);
-float distance = Math.RandomFloat(50, 150);
+const int HORDE_SPAWN_INTERVAL = 600000;
+const int HORDE_SIZE_MIN = 5;
+const int HORDE_SIZE_MAX = 16;
+const float SPAWN_DISTANCE_MIN = 50.0;
+const float SPAWN_DISTANCE_MAX = 150.0;
 ```
 
 ### Hard Mode
 ```cpp
-GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 300000, true);
-int hordeSize = Math.RandomInt(10, 26);
-float distance = Math.RandomFloat(40, 120);
+const int HORDE_SPAWN_INTERVAL = 300000;
+const int HORDE_SIZE_MIN = 10;
+const int HORDE_SIZE_MAX = 26;
+const float SPAWN_DISTANCE_MIN = 40.0;
+const float SPAWN_DISTANCE_MAX = 120.0;
 ```
 
 ### Nightmare Mode
 ```cpp
-GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 180000, true);
-int hordeSize = Math.RandomInt(20, 41);
-float distance = Math.RandomFloat(30, 100);
+const int HORDE_SPAWN_INTERVAL = 180000;
+const int HORDE_SIZE_MIN = 20;
+const int HORDE_SIZE_MAX = 41;
+const float SPAWN_DISTANCE_MIN = 30.0;
+const float SPAWN_DISTANCE_MAX = 100.0;
 ```
 
 ## Troubleshooting
