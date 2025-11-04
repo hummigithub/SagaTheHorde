@@ -1,0 +1,31 @@
+# Build artifacts
+*.pbo
+*.bisign
+
+# Editor backup files
+*~
+*.bak
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Log files
+*.log
+*.rpt
+
+# Test files
+/test/
+/tests/
+
+# Temporary files
+/tmp/
+temp/
