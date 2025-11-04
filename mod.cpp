@@ -1,0 +1,10 @@
+name = "SagaTheHorde";
+picture = "";
+logoSmall = "";
+logo = "";
+logoOver = "";
+tooltip = "SagaTheHorde";
+overview = "Configurable zombie horde spawner with notifications.";
+action = "";
+author = "SagaTheHorde";
+version = "1.0.0";

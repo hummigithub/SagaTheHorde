@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SagaTheHorde Config Builder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>SagaTheHorde Config Builder</h1>
+  <div class="version">Target config version: <strong>3.0</strong></div>
+  </header>
+
+  <main>
+    <section class="actions">
+      <button id="btn-new">New config</button>
+      <label class="file-input">
+        <input type="file" id="file-import" accept="application/json" />
+        <span>Import config.json</span>
+      </label>
+      <button id="btn-export">Export config.json</button>
+      <button id="btn-copy">Copy JSON</button>
+    </section>
+
+    <section class="panel">
+      <h2>Global Settings</h2>
+      <div id="global-form" class="form-grid"></div>
+
+      <h3>Reward Items</h3>
+      <div id="rewards-list"></div>
+      <button id="btn-add-reward" class="small">+ Add Reward Item</button>
+    </section>
+
+    <section class="panel">
+      <h2>Hordes</h2>
+      <div id="hordes-list"></div>
+      <button id="btn-add-horde" class="small">+ Add Horde</button>
+    </section>
+
+    <section class="panel">
+      <h2>Preview</h2>
+      <textarea id="preview" spellcheck="false"></textarea>
+    </section>
+  </main>
+
+  <footer>
+    <p>Offline tool. Open this file in your browser. No server required.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
