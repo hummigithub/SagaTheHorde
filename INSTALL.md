@@ -55,9 +55,9 @@ Change how often hordes spawn (in milliseconds):
 
 #### Horde Size
 Adjust the number of zombies per horde:
-- Default: MIN=5, MAX=16 (5-15 zombies)
-- Small: MIN=3, MAX=8 (3-7 zombies)
-- Large: MIN=10, MAX=26 (10-25 zombies)
+- Default: MIN=5, MAX=16 (5-16 zombies)
+- Small: MIN=3, MAX=8 (3-8 zombies)
+- Large: MIN=10, MAX=26 (10-26 zombies)
 
 #### Spawn Distance
 Change how far from players hordes spawn (in meters):

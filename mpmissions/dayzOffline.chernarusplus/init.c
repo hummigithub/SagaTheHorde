@@ -56,7 +56,8 @@ void SpawnHordes()
 		vector playerPos = player.GetPosition();
 		
 		// Spawn multiple zombies in a horde using configured size
-		int hordeSize = Math.RandomInt(HORDE_SIZE_MIN, HORDE_SIZE_MAX);
+		// Note: Math.RandomInt's second parameter is exclusive, so we add 1 to include HORDE_SIZE_MAX
+		int hordeSize = Math.RandomInt(HORDE_SIZE_MIN, HORDE_SIZE_MAX + 1);
 		
 		for (int i = 0; i < hordeSize; i++)
 		{

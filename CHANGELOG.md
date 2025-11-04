@@ -7,7 +7,7 @@ All notable changes to the SagaTheHorde mod will be documented in this file.
 ### Added
 - Initial release of SagaTheHorde mod
 - Dynamic zombie horde spawning system
-- Configurable horde size (5-15 zombies default)
+- Configurable horde size (5-16 zombies default)
 - Configurable spawn interval (10 minutes default)
 - Safe spawn distance (50-150 meters from players)
 - Multiple zombie types for variety

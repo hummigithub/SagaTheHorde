@@ -30,10 +30,10 @@ const int HORDE_SIZE_MIN = X;
 const int HORDE_SIZE_MAX = XX;
 ```
 Replace X and XX:
-- MIN=3, MAX=8 = Small hordes
-- MIN=5, MAX=16 = Default
-- MIN=10, MAX=26 = Large hordes
-- MIN=20, MAX=41 = Massive hordes
+- MIN=3, MAX=8 = Small hordes (3-8 zombies)
+- MIN=5, MAX=16 = Default (5-16 zombies)
+- MIN=10, MAX=26 = Large hordes (10-26 zombies)
+- MIN=20, MAX=41 = Massive hordes (20-41 zombies)
 
 ### Change Spawn Distance
 ```cpp

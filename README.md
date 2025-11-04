@@ -6,7 +6,7 @@ SagaTheHorde is a server-side modification for DayZ that spawns dynamic zombie h
 
 ## Features
 - **Dynamic Horde Spawning**: Zombie hordes spawn automatically near players
-- **Configurable Size**: Hordes contain 5-15 zombies (customizable)
+- **Configurable Size**: Hordes contain 5-16 zombies (customizable)
 - **Safe Distance**: Zombies spawn 50-150 meters from players
 - **Variety**: Multiple zombie types for diverse encounters
 - **Performance Optimized**: Efficient spawning system
@@ -22,7 +22,7 @@ See [INSTALL.md](INSTALL.md) for detailed installation and configuration instruc
 ## Configuration
 The mod is easily customizable through configuration constants at the top of the `init.c` file:
 - **Spawn frequency** - how often hordes appear (default: 10 minutes)
-- **Horde size** - number of zombies per horde (default: 5-15)
+- **Horde size** - number of zombies per horde (default: 5-16)
 - **Spawn distance** - how far from players (default: 50-150 meters)
 
 No need to search through code - all settings are clearly labeled at the top of the file!
