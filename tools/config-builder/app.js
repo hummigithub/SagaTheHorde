@@ -4,7 +4,7 @@
 (function() {
   const VERSION = "3.0";
 
-  // Default model matching STH_Config constructors and defaults
+
   function defaultConfig() {
     return orderConfig({
       ConfigVersion: VERSION,
@@ -77,7 +77,7 @@
     });
   }
 
-  // Ensure consistent key order in output
+
   function orderConfig(cfg) {
     const orderRewardItem = (r) => ({
       ClassName: r.ClassName || "",
@@ -141,7 +141,7 @@
       },
       Hordes: (Array.isArray(cfg.Hordes) ? cfg.Hordes : []).map(orderHorde)
     };
-    // RewardPickMin must be <= RewardPickMax
+
     if (ordered.Global.RewardPickMin > ordered.Global.RewardPickMax) {
       ordered.Global.RewardPickMin = ordered.Global.RewardPickMax;
     }
@@ -151,10 +151,10 @@
   function toInt(v, d) { const n = parseInt(v, 10); return isNaN(n) ? d : n; }
   function toFloat(v, d) { const n = parseFloat(v); return isNaN(n) ? d : n; }
 
-  // State
+
   let state = defaultConfig();
 
-  // UI rendering helpers
+
   const $ = (sel) => document.querySelector(sel);
   const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
