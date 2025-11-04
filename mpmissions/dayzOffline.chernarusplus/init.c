@@ -43,7 +43,7 @@ void SpawnHordes()
 		for (int i = 0; i < hordeSize; i++)
 		{
 			// Random position around player (50-150m away)
-			float angle = Math.RandomFloat(0, 360);
+			float angle = Math.RandomFloat(0, Math.PI * 2); // Angle in radians
 			float distance = Math.RandomFloat(50, 150);
 			
 			vector spawnPos = playerPos;
@@ -133,7 +133,6 @@ class CustomMission: MissionServer
 		EntityAI itemClothes;
 		EntityAI itemEnt;
 		ItemBase itemBs;
-		float rand;
 
 		// Clothing
 		itemClothes = player.FindAttachmentBySlotName("Body");
