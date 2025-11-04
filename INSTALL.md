@@ -32,11 +32,12 @@ You can customize the horde behavior by editing the `init.c` file:
 #### Spawn Interval
 Change how often hordes spawn (in milliseconds):
 ```cpp
-GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 10000, true);
+GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 600000, true);
 ```
-- `10000` = 10 seconds (default)
-- `60000` = 1 minute
+- `600000` = 10 minutes (default)
 - `300000` = 5 minutes
+- `900000` = 15 minutes
+- `1200000` = 20 minutes
 
 #### Horde Size
 Adjust the number of zombies per horde:

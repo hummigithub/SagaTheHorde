@@ -15,8 +15,8 @@ void main()
 	// Initialize economy
 	GetCEApi().ExportProxyData(Vector(7500, 0, 7500), 15000);
 
-	// Initialize horde system
-	GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 10000, true);
+	// Initialize horde system (spawns every 10 minutes)
+	GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(SpawnHordes, 600000, true);
 }
 
 // Horde spawning function
